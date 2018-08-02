@@ -27,7 +27,7 @@
   "author": "Patrick C. Kilgore, contributors, and various licensors",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.15.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
