@@ -26,7 +26,8 @@
     "src/*": [
       "./node_modules/web-ext/bin/web-ext lint --source-dir=",
       "git add"
-    ]
+    ],
+    "ignore": ["src/*.{js,css}"]
   },
   "author": "Patrick C. Kilgore, contributors, and various licensors",
   "license": "MIT",
