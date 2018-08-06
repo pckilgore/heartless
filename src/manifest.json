@@ -13,8 +13,9 @@
     "48": "icons/heart-18.svg"
   },
   "browser_action": {
+    "browser_style": true,
     "default_icon": "icons/heart-18.svg",
-    "default_title": "Hide heartless for 60 seconds."
+    "default_title": "Hide heartless for 20 seconds & refresh data."
   },
   "content_scripts": [
     {
@@ -24,7 +25,13 @@
     }
   ],
   "background": {
-    "scripts": ["heartless-background.js"]
+    "scripts": ["heartless-background.js", "authorize.js", "userinfo.js"]
   },
-  "permissions": ["<all_urls>"]
+  "permissions": [
+    "<all_urls>",
+    "*://www.googleapis.com/*",
+    "*://accounts.google.com/*",
+    "identity",
+    "notifications"
+  ]
 }

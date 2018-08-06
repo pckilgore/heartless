@@ -41,10 +41,9 @@
       "overwriteDest": true
     },
     "run": {
+      "browserConsole": true,
       "startUrl": [
-        "https://developer.mozilla.org/en-US/",
-        "https://thedailybeast.com",
-        "http://google.com"
+        "https://developer.mozilla.org/en-US/"
       ]
     },
     "lint": {

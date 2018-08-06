@@ -1,8 +1,7 @@
 #heartless-annoy-o-tron {
   position: fixed;
-  padding-top: 1em !important;
   text-align: center;
-  height: 10vh;
+  height: 0vh;
   z-index: 1000;
   left: 0;
   bottom: 0;
@@ -17,10 +16,14 @@
   -o-transition: all 5s ease-in-out;
   transition: all 5s ease-in-out;
 }
-.message {
+#heartless-taunt {
+  margin-top: 1em !important;
   color: whitesmoke;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 2em !important;
   font-weight: bold;
   opacity: 0.9;
+}
+.hide {
+  display: none;
 }
