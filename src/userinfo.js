@@ -1,4 +1,3 @@
-let module = {}
 /**
  *  Generates dates for Google Fitness API request.
  *  If no argument is provided, returns a 0 length date that is still a valid
