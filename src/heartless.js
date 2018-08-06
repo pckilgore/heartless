@@ -29,7 +29,7 @@
       setInterval(() => {
         console.log('heartless....tick')
         browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
-      }, 300000)
+      }, 60000)
     }
   })
 

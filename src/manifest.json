@@ -10,7 +10,7 @@
     }
   },
   "icons": {
-    "48": "icons/heart-18.svg"
+    "48": "./icons/heart-18.svg"
   },
   "browser_action": {
     "browser_style": true,
@@ -20,14 +20,19 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["heartless.js"],
-      "css": ["assets/base.css"]
+      "js": ["./assets/browser-polyfill.js", "./heartless.js"],
+      "css": ["./assets/base.css"]
     }
   ],
   "background": {
-    "scripts": ["heartless-background.js", "authorize.js", "userinfo.js"]
+    "scripts": [
+      "./assets/browser-polyfill.js",
+      "./heartless-background.js",
+      "./authorize.js",
+      "./userinfo.js"
+    ]
   },
-  "web_accessible_resources": ["assets/heartless.svg"],
+  "web_accessible_resources": ["./assets/heartless.svg"],
   "permissions": [
     "<all_urls>",
     "*://www.googleapis.com/*",

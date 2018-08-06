@@ -30,13 +30,7 @@ function hideTron(tab) {
 /*
 * When the browseraction button is pressed, it fires this event.
 */
-function actionListener(tab) {
-  if (needToLogin) {
-    login(tab)
-  } else {
-    hideTron(tab)
-  }
-}
+const actionListener = () => (needToLogin ? login : hideTron)
 
 const parseSessionData = sessionData => {
   console.groupCollapsed('Heartless: Remote Data')
@@ -77,6 +71,7 @@ function setHeartless(tab) {
 }
 
 function fitResponsHandler(response, tab) {
+  needToLogin = false
   browser.tabs
     .sendMessage(tab.id, {
       action: 'HEARTLESS_SET_HEIGHT',
