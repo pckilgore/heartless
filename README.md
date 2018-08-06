@@ -1,5 +1,7 @@
 # Heartless
+[![Build Status](https://travis-ci.com/pckilgore/heartless.svg?branch=master)](https://travis-ci.com/pckilgore/heartless)
 
+## Getting Started
 ```bash
 # install deps
 npm install
@@ -8,3 +10,4 @@ npm install
 # (see package.json.webExt for default config)
 npm start
 ```
+
