@@ -34,12 +34,12 @@ function getUserInfo(accessToken) {
     method: 'GET',
     headers: requestHeaders
   })
-
+  console.log('fetching data from', requestURL)
   return fetch(driveRequest).then(response => {
     if (response.status === 200) {
       return response.json()
     } else {
-      throw response.status
+      throw Error(response.status)
     }
   })
 }

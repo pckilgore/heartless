@@ -17,37 +17,45 @@
   /*
  *  Setup extension state.
  */
-  let tron,
-    taunt,
-    state = {height: '0vh'}
+  let tron, taunt, vh
+
+  window.addEventListener('load', () => {
+    if (window.location.hostname !== 'accounts.google.com') {
+      console.log('heartless...initial load')
+      browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
+      /*
+    *  And every 5 minutes after that...
+    */
+      setInterval(() => {
+        console.log('heartless....tick')
+        browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
+      }, 300000)
+    }
+  })
 
   /*
-    *  Check status every time a page loads...
-    */
-  window.addEventListener('load', () => {
-    browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
-    /*
-    *  And every 10 minutes after that...
-    */
-    setInterval(() => {
-      browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
-    }, 600000)
-  })
-  /*
-*   Listen for messages from the background script
-*   and adjust the annoy-o-tron div accordingly
-*/
+  *   Listen for messages from the background script
+  *   and adjust the annoy-o-tron div accordingly
+  */
   browser.runtime.onMessage.addListener(message => {
     tron = document.getElementById(heartless)
 
     switch (message.action) {
       case 'HEARTLESS_SET_HEIGHT':
+        window.loggedIn = true
+
+        console.log('heartless: setting height to ', message.height)
+
+        vh = message.height + 'vh'
         tron = document.getElementById(heartless)
-        tron.style.height = message.height || tron.style.height
         taunt = document.getElementById('heartless-taunt')
-        if (+message.height.slice(0, 2) < 25) {
+
+        tron.style.height = message.height ? vh : tron.style.height
+
+        if (message.height < 25) {
           taunt.classList.add('hide')
         } else taunt.classList.remove('hide')
+
         break
       case 'HEARTLESS_HIDE':
         tron.style.height = '0vh'
