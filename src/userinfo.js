@@ -16,7 +16,7 @@ function getRequestDates(days) {
       }
     : {startDate: base.toISOString(), endDate: base.toISOString()}
 }
-// module.exports = {getRequestDates}
+module.exports = {getRequestDates}
 /**
 Fetch the user's info, passing in the access token in the Authorization
 HTTP request header.
