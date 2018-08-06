@@ -42,9 +42,8 @@
       "overwriteDest": true
     },
     "run": {
-      "browserConsole": true,
       "startUrl": [
-        "https://developer.mozilla.org/en-US/"
+        "https://reddit.com/"
       ]
     },
     "lint": {

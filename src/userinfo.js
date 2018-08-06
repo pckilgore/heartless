@@ -39,7 +39,7 @@ function getUserInfo(accessToken) {
     if (response.status === 200) {
       return response.json()
     } else {
-      throw response.status
+      throw Error(response.status)
     }
   })
 }

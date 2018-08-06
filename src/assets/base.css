@@ -9,7 +9,8 @@
 
   background-color: crimson;
   background-repeat: no-repeat, no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   background-image: url('heartless.svg');
   opacity: 0.9;
 

@@ -4,7 +4,6 @@
   */
   if (window.heartlessRun) return
   window.heartlessRun = true
-  window.loggedIn = false
 
   const heartless = 'heartless-annoy-o-tron'
   /*
@@ -20,35 +19,34 @@
  */
   let tron, taunt, vh
 
-  /*
-    *  Check status every time a page loads...
-    */
   window.addEventListener('load', () => {
-    console.log('heartless...initial load')
-    browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
-    /*
-    *  And every 10 minutes after that...
-    */
-    setInterval(() => {
-      console.log('heartless....tick')
+    if (window.location.hostname !== 'accounts.google.com') {
+      console.log('heartless...initial load')
       browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
-    }, 600000)
+      /*
+    *  And every 5 minutes after that...
+    */
+      setInterval(() => {
+        console.log('heartless....tick')
+        browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
+      }, 300000)
+    }
   })
+
   /*
-*   Listen for messages from the background script
-*   and adjust the annoy-o-tron div accordingly
-*/
+  *   Listen for messages from the background script
+  *   and adjust the annoy-o-tron div accordingly
+  */
   browser.runtime.onMessage.addListener(message => {
     tron = document.getElementById(heartless)
 
     switch (message.action) {
-      case 'HEARTLESS_LOGGED_IN':
-        window.loggedIn = true
-        break
       case 'HEARTLESS_SET_HEIGHT':
-        console.log('heartless: setting height to ', message.height)
-        vh = message.height + 'vh'
+        window.loggedIn = true
 
+        console.log('heartless: setting height to ', message.height)
+
+        vh = message.height + 'vh'
         tron = document.getElementById(heartless)
         taunt = document.getElementById('heartless-taunt')
 
