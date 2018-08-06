@@ -77,6 +77,7 @@ function setHeartless(tab) {
 }
 
 function fitResponsHandler(response, tab) {
+  needToLogin = false
   browser.tabs
     .sendMessage(tab.id, {
       action: 'HEARTLESS_SET_HEIGHT',
