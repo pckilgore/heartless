@@ -1,12 +1,20 @@
 language: node_js
 node_js:
-  - node # uses most recent stable node version
-dist: trusty # uses trusty environment
-sudo: false # when on trusty, uses Docker containers for speed
+- node
+dist: trusty
+sudo: false
 notifications:
   email:
-    on_success: change # default: change (only when going from broken to fixed)
-    on_failure: always # default: always (which is annoying, as it should be)
+    on_success: change
+    on_failure: always
 install:
-  - npm ci # faster, goes only from package-lock
-  
+- npm ci
+deploy:
+  provider: releases
+  api_key:
+    secure: TA+3UUTy04rR10eoj0wadBInWIK41JFJ9baIuMRn7DyaBeRuLf2XLFZX6XLU/D06U9TZ/v91iyjp+1QWIiWUrgpGH7RD7KIGa4Rxk8+5mD8siyXQahiOhwV4ERIQzsQo7NB7ThCouEMj2DoAT9hNov3d+gLRID8JxisEr6WDat48DErCsOpK3mrxj65Wgf2oO3TYfwc0OrIr5zbzRnXe9woPfgfcD3t2/p7AZoUmT7s5v6f6Aeh1KwJOtK6g8zx87LCdoyBsfs8+jwaci0znedGG1I5sHi1jGV0LG5BtNgyLhBtKegcWZliQoEj0bD6GWkUT5J1cNvYzY4TVs61+JWLLbzI7DiWqhJVsyQu3ifBjOcB7VFG0XpQh5kQ8JN9gXBXpHqLh0tF9oPJuQPfkI3Y7lsBtoMCGmVQSXbugi30oEcWdkaVPW/1z0GcvbIDiEIY0lwY1NVC14LHjWWCuNH5HWI4PEXaAcyG5pc+5aP9ocefMlgNg7DiKEokLlyNJbuM2Xgo1bwbGTA9RYg5xNTfuU8U5DvN4vor03hLi471okW/KGe+i+mo/92PKUWnowkH9bK3+wKFOrmA7gKwYUi2GGn/wcJ6GQuyYb33FVbofyN+zIwM2EG0R7O6jkgl1ajlgImFWvWV8DUiAI521F6aGZrw04wsjOphWrZbCdKE=
+  file: dist/*
+  on:
+    repo: pckilgore/heartless
+    branch: release
+

@@ -14,7 +14,8 @@
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
     "test": "NODE_ENV='test' mocha \"./test/**/*.spec.js\"",
     "start": "node_modules/web-ext/bin/web-ext run",
-    "lint-ext": "echo '\n\\e[4mWebextension Linter\\e[0m:\n' && ./node_modules/web-ext/bin/web-ext lint"
+    "lint-ext": "echo '\n\\e[4mWebextension Linter\\e[0m:\n' && ./node_modules/web-ext/bin/web-ext lint",
+    "deploy": "node_modules/web-ext/bin/web-ext build"
   },
   "husky": {
     "hooks": {
