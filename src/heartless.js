@@ -6,28 +6,44 @@
   if (window.heartlessRun) return
   window.heartlessRun = true
 
-  const heartless = 'heartless-anny-o-tron'
+  const heartless = 'heartless-annoy-o-tron'
   /*
   *  Basic setup.
   */
-  const result = document.createElement('div')
-  result.setAttribute('id', heartless)
-  document.body.appendChild(result)
-  const tron = document.getElementById(heartless)
+  const div = document.createElement('div')
+  div.setAttribute('id', heartless)
+  div.innerHTML = `<span class='message'>Wow. <i>Much sitting.</i> So lazy.</span>`
+  document.body.appendChild(div)
+
+  /*
+  *  Setup extension state.
+  */
+  let tron,
+    state = {height: '10vh'} // TODO: init to zero
 
   /*
   *   Listen for messages from the background script
   *   and adjust the annoy-o-tron div accordingly
   */
   browser.runtime.onMessage.addListener(message => {
+    tron = document.getElementById(heartless)
+
+    console.log('got message:', message)
+
     switch (message.action) {
       case 'HEARTLESS_SET_HEIGHT':
-        tron.style.height = message.height || 0
-        break
-      case 'HEARTLESS_GET_HEIGHT':
-        break
+        tron = document.getElementById(heartless)
+        tron.style.height = message.height || tron.style.height
+        state.height = message.height || tron.style.height
+        return Promise.resolve({success: true, height: state.height, message})
+      case 'HEARTLESS_RESET':
+        tron.style.height = state.height
+        return Promise.resolve({success: true, message})
+      case 'HEARTLESS_HIDE':
+        tron.style.height = '0vh'
+        return Promise.resolve({success: true, height: state.height, message})
       default:
-        break
+        return Promise.resolve({success: false, message})
     }
   })
 })()

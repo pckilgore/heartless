@@ -2,6 +2,8 @@
   "name": "heartless",
   "version": "0.1.0",
   "description": "Fitness plugin for Firefox, Chrome, and Edge.",
+  "author": "Patrick C. Kilgore, contributors, and various licensors",
+  "license": "MIT",
   "engines": {
     "node": "10.x"
   },
@@ -11,7 +13,13 @@
     "lint-fix": "npm run lint -- --fix",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
     "test": "NODE_ENV='test' mocha \"./test/**/*.spec.js\"",
-    "test:ext": "node_modules/web-ext/bin/web-ext run"
+    "start": "node_modules/web-ext/bin/web-ext run",
+    "lint-ext": "echo '\n\\e[4mWebextension Linter\\e[0m:\n' && ./node_modules/web-ext/bin/web-ext lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run lint-ext"
+    }
   },
   "lint-staged": {
     "linters":{
@@ -26,17 +34,17 @@
       ]
     }
   },
-  "author": "Patrick C. Kilgore, contributors, and various licensors",
-  "license": "MIT",
   "webExt": {
     "sourceDir": "./src",
+    "artifactsDir": "./dist",
     "build": {
       "overwriteDest": true
     },
     "run": {
-      "browserConsole": true,
       "startUrl": [
-        "https://developer.mozilla.org/en-US/"
+        "https://developer.mozilla.org/en-US/",
+        "https://thedailybeast.com",
+        "http://google.com"
       ]
     },
     "lint": {
@@ -61,10 +69,5 @@
     "prettier": "^1.11.1",
     "supertest": "^3.0.0",
     "web-ext": "^2.8.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo '\n' && lint-staged && echo '\n\\e[4mWebextension Linter\\e[0m:\n' && ./node_modules/web-ext/bin/web-ext lint"
-    }
   }
 }
