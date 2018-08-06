@@ -64,7 +64,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && echo '\nWebextension Linter:\n' && ./node_modules/web-ext/bin/web-ext lint"
+      "pre-commit": "echo '\n' && lint-staged && echo '\n\\e[4mWebextension Linter\\e[0m:\n' && ./node_modules/web-ext/bin/web-ext lint"
     }
   }
 }
