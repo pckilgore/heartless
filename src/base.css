@@ -1,0 +1,11 @@
+#heartless-anny-o-tron {
+  position: fixed;
+  height: 10vh;
+  z-index: 100000;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background-color: crimson !important;
+  opacity: 0.9;
+}
