@@ -11,7 +11,7 @@
     "lint-fix": "npm run lint -- --fix",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
     "test": "NODE_ENV='test' mocha \"./test/**/*.spec.js\"",
-    "test:ext": "node_modules/web-ext/bin/web-ext run --source-dir=./src"
+    "test:ext": "node_modules/web-ext/bin/web-ext run"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -24,13 +24,15 @@
       "git add"
     ],
     "src/*": [
-      "node_modules/web-ext/bin/web-ext lint --source-dir=./src",
+      "./node_modules/web-ext/bin/web-ext lint --source-dir=",
       "git add"
     ]
   },
   "author": "Patrick C. Kilgore, contributors, and various licensors",
   "license": "MIT",
   "webExt": {
+    "sourceDir": "./src",
+    "verbose": true,
     "build": {
       "overwriteDest": true
     },
@@ -41,7 +43,8 @@
       ]
     },
     "lint": {
-      "output": "text"
+      "output": "text",
+      "selfHosted": true
     }
   },
   "dependencies": {
