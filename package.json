@@ -11,7 +11,8 @@
     "lint-fix": "npm run lint -- --fix",
     "precommit": "lint-staged",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
-    "test": "NODE_ENV='test' mocha \"./test/**/*.spec.js\""
+    "test": "NODE_ENV='test' mocha \"./test/**/*.spec.js\"",
+    "start:firefox": "./node_modules/web-ext/bin/web-ext run --source-dir ./"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -41,6 +42,7 @@
     "mocha": "^5.2.0",
     "npm-merge-driver": "^2.3.5",
     "prettier": "^1.11.1",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "web-ext": "^2.8.0"
   }
 }
