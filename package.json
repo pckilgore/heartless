@@ -30,7 +30,6 @@
   "license": "MIT",
   "webExt": {
     "sourceDir": "./src",
-    "verbose": true,
     "build": {
       "overwriteDest": true
     },
