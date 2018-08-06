@@ -1,5 +1,10 @@
 {
   "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "webextensions": true
+  },
   "extends": ["fullstack", "prettier"],
   "rules": {
     "semi": 0

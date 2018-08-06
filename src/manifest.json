@@ -1,0 +1,30 @@
+{
+  "name": "Heartless",
+  "description": "Makes browsing a pain if you've been lazy.",
+  "manifest_version": 2,
+  "version": "1.0",
+  "homepage_url": "https://github.com/pckilgore/heartless",
+  "applications": {
+    "gecko": {
+      "id": "heartless@pck.email"
+    }
+  },
+  "icons": {
+    "48": "icons/heart-18.svg"
+  },
+  "browser_action": {
+    "default_icon": "icons/heart-18.svg",
+    "default_title": "Hide heartless for 60 seconds."
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["heartless.js"],
+      "css": ["base.css"]
+    }
+  ],
+  "background": {
+    "scripts": ["heartless-background.js"]
+  },
+  "permissions": ["<all_urls>"]
+}
