@@ -15,7 +15,7 @@
     "test": "NODE_ENV='test' mocha \"./test/**/*.spec.js\"",
     "start": "node_modules/web-ext/bin/web-ext run",
     "lint-ext": "echo '\n\\e[4mWebextension Linter\\e[0m:\n' && ./node_modules/web-ext/bin/web-ext lint",
-    "deploy": "node_modules/web-ext/bin/web-ext build"
+    "build": "node_modules/web-ext/bin/web-ext build"
   },
   "husky": {
     "hooks": {
@@ -68,6 +68,9 @@
     "npm-merge-driver": "^2.3.5",
     "prettier": "^1.11.1",
     "supertest": "^3.0.0",
-    "web-ext": "^2.8.0"
+    "web-ext": "^2.8.0",
+    "webextension-polyfill": "^0.3.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
   }
 }
