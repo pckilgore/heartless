@@ -4,6 +4,7 @@
   */
   if (window.heartlessRun) return
   window.heartlessRun = true
+  window.loggedIn = false
 
   const heartless = 'heartless-annoy-o-tron'
   /*
@@ -41,6 +42,9 @@
     tron = document.getElementById(heartless)
 
     switch (message.action) {
+      case 'HEARTLESS_LOGGED_IN':
+        window.loggedIn = true
+        break
       case 'HEARTLESS_SET_HEIGHT':
         console.log('heartless: setting height to ', message.height)
         vh = message.height + 'vh'

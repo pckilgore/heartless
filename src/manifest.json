@@ -27,6 +27,7 @@
   "background": {
     "scripts": ["heartless-background.js", "authorize.js", "userinfo.js"]
   },
+  "web_accessible_resources": ["assets/heartless.svg"],
   "permissions": [
     "<all_urls>",
     "*://www.googleapis.com/*",

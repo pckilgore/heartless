@@ -8,6 +8,9 @@
   right: 0;
 
   background-color: crimson;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover;
+  background-image: url('heartless.svg');
   opacity: 0.9;
 
   -webkit-transition: all 5s ease-in-out;

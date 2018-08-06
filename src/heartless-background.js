@@ -6,10 +6,18 @@ function logError(error) {
   console.error(`Error: ${error}`)
 }
 
+// let needToLogin = true
+
 /*
 * When the browseraction button is pressed, it fires this event.
 */
 function hideListener(tab) {
+  // if (needToLogin) {
+  //   console.log('Let us login then...')
+  //   setHeartless(tab)
+  //   needToLogin = false
+  // }
+  // console.log('skipping login')
   browser.tabs.sendMessage(tab.id, {action: 'HEARTLESS_HIDE'}).then(() => {
     /*
       *  Once the content script responds with the current height,
@@ -49,6 +57,13 @@ function setHeartless(tab) {
   console.log('heartless: Pulling remote data...')
   getAccessToken()
     .then(getUserInfo)
+    // .then(response => {
+    //   return browser.tabs
+    //     .sendMessage(tab.id, {action: 'HEARTLESS_LOGGED_IN'})
+    //     .then(() => {
+    //       return response
+    //     })
+    // })
     .then(response => fitResponsHandler(response, tab))
     .catch(logError)
 }
