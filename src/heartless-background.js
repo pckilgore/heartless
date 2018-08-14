@@ -60,9 +60,12 @@ browser.runtime.onMessage.addListener(message => {
   browser.tabs
     .query({currentWindow: true, active: true})
     .then(([tab]) => {
-      if (message.action === 'HEARTLESS_BG_LOAD') {
+      if (message.action === 'HEARTLESS_BG_LOAD' && !needToLogin) {
         console.log('Running a BG load')
         setHeartless(tab)
+      } else if (needToLogin) {
+        // User isn't logged in, do nothing.
+        return true
       }
     })
     .catch(logError)
