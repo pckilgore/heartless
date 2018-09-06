@@ -5,7 +5,7 @@ const MockDate = require('mockdate')
 describe('helper functions', () => {
   describe('getRequestDays(days:number)', () => {
     before(() => {
-      MockDate.set(1533565292935) // roughly 9AM August 6.
+      MockDate.set(1533565292935) // roughly 9AM August 6, 2018.
     })
 
     it('returns the right types', () => {
@@ -16,11 +16,13 @@ describe('helper functions', () => {
     })
 
     it('calculates correct values', () => {
+      const MILLIS_IN_DAY = 86400000
+
       let test = Math.ceil(Math.random() * 100)
       let output = helper.getRequestDates(test)
       let now = new Date()
-      let then = new Date(now - 86400000 * test)
-      // 86400000 = milliseconds in day
+      let then = new Date(now - MILLIS_IN_DAY * test)
+
       expect(output.startDate).to.equal(then.toISOString())
       expect(output.endDate).to.equal(now.toISOString())
     })

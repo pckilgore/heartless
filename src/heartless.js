@@ -5,9 +5,16 @@
   if (window.heartlessRun) return
   window.heartlessRun = true
 
+  /**
+   *  Cross Browser compatability...namespace webextension API to browser.XXXX
+   */
+  window.browser = (() => window.msBrowser || window.browser || window.chrome)()
+
   const heartless = 'heartless-annoy-o-tron'
   /*
-  *  Basic setup.
+  *  Basic setup.  We're hoping anyone with react et al does the right thing and
+  *  uses an internal div rather than the body.  If that's true, we can
+  *  avoid fudging with someone elses DOM diffs.
   */
   const div = document.createElement('div')
   div.setAttribute('id', heartless)
@@ -20,14 +27,14 @@
   let tron, taunt, vh
 
   window.addEventListener('load', () => {
+    // Don't inject if we are loading the google OAuth page.
+    // That's just evil.
     if (window.location.hostname !== 'accounts.google.com') {
-      console.log('heartless...initial load')
       browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
       /*
-    *  And every 5 minutes after that...
-    */
+       *  And every 5 minutes after that...
+       */
       setInterval(() => {
-        console.log('heartless....tick')
         browser.runtime.sendMessage({action: 'HEARTLESS_BG_LOAD'})
       }, 60000)
     }
@@ -43,13 +50,11 @@
     switch (message.action) {
       case 'HEARTLESS_SET_HEIGHT':
         window.loggedIn = true
-
-        console.log('heartless: setting height to ', message.height)
-
         vh = message.height + 'vh'
+
+        // get EXTRA annoying when we're missing the goal by a lot.
         tron = document.getElementById(heartless)
         taunt = document.getElementById('heartless-taunt')
-
         tron.style.height = message.height ? vh : tron.style.height
 
         if (message.height < 25) {
@@ -61,7 +66,9 @@
         tron.style.height = '0vh'
         break
       default:
-        console.log('heartless: Content script got event but no action taken.')
+        console.error(
+          'heartless warning: Content script received unknown event.'
+        )
         break
     }
   })
