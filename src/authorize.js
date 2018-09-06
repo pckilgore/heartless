@@ -59,9 +59,9 @@ function validate(redirectURL) {
 }
 
 /**
-Authenticate and authorize using browser.identity.launchWebAuthFlow().
+Authenticate with browser.identity.launchWebAuthFlow().
 If successful, this resolves with a redirectURL string that contains
-an access token.
+an access token.  TODO: Use chrome specific feature for that browser.
 */
 function authorize() {
   return browser.identity.launchWebAuthFlow({
