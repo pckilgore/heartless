@@ -19,6 +19,8 @@
   const div = document.createElement('div')
   div.setAttribute('id', heartless)
   div.innerHTML = `<div id='heartless-taunt' class='hide'>Wow. <i>Much sitting.</i> So lazy.</div>`
+  const imgURL = browser.runtime.getURL('assets/heartless.svg')
+  div.style.backgroundImage = `url('${imgURL}')`
   document.body.appendChild(div)
 
   /*
