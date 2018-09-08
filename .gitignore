@@ -4,3 +4,4 @@ secrets.js
 npm-debug.log
 yarn-error.log
 *.crx
+secrets.js
